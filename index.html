@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#3F3E95">
+  <link rel="icon" type="image/svg+xml" href="./logo.svg">
   <meta name="description" content="Avaliação física e prescrição de exercícios individualizada por R$ 30 na Academia Feeling Guarani, em Ponta Grossa. Agende pelo WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
@@ -24,7 +25,7 @@
     .container{width:min(1112px,calc(100% - 44px));margin-inline:auto}
     .site-header{display:flex;align-items:center;gap:16px;justify-content:space-between;padding-block:23px 26px}
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .logo{flex:none;background:var(--yellow);border-radius:50%;width:72px;height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#202020;box-shadow:0 7px 18px #0000000d;text-align:center}
+    .logo{flex:none;display:block;width:168px;height:auto}
     .logo strong{font-size:25px;letter-spacing:-2px;font-style:italic;font-weight:500;line-height:1}
     .logo small{font-size:7px;letter-spacing:4px;margin-left:4px;margin-top:3px}
     .brand-text{display:flex;flex-direction:column;gap:4px}
@@ -91,7 +92,7 @@
     @media(max-width:600px){
       .container{width:min(100% - 28px,1112px)}
       .site-header{padding:13px 0 17px}
-      .logo{width:61px;height:61px}
+      .logo{width:124px;height:auto}
       .logo strong{font-size:22px}
       .logo small{font-size:6px;letter-spacing:3.5px}
       .brand-text span{font-size:9px;letter-spacing:1px}
@@ -129,8 +130,8 @@
   <div class="topline" aria-hidden="true"></div>
   <header class="container site-header">
     <div class="brand">
-      <div class="logo" role="img" aria-label="Academia Feeling"><strong>Feeling</strong><small>academia</small></div>
-      <div class="brand-text"><span>ACADEMIA FEELING</span><strong>Unidade Guarani · Ponta Grossa/PR</strong></div>
+      <img class="logo" src="./logo.svg" alt="Academia Feeling" width="168" height="62">
+      <div class="brand-text"><span>PONTA GROSSA · PR</span><strong>Unidade Guarani</strong></div>
     </div>
     <a class="header-link" data-cta="header" href="https://wa.me/5542999696110?text=Ol%C3%A1!%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o%20f%C3%ADsica%20com%20prescri%C3%A7%C3%A3o%20de%20exerc%C3%ADcios%20individualizada%20por%20R%24%2030%20na%20Academia%20Feeling%20%E2%80%94%20unidade%20Guarani." target="_blank" rel="noopener noreferrer">Fale com a equipe &rarr;</a>
   </header>
