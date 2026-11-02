@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3F3E95">
+<meta name="description" content="O destino do nosso jantar está nas suas mãos! Vote no país-tema do jantar de encerramento do Feeling World Ride.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Feeling World Ride | Escolha o país do nosso jantar">
+<meta property="og:description" content="Pedalamos pelo mundo. Agora você escolhe onde será nosso jantar! Vote em um dos dez países.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://jacksonexercicio-sudo.github.io/feeling-avaliacao-guarani/logo.svg">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Vote no nosso jantar | Feeling World Ride</title>
+<style>
+:root{--blue:#3F3E95;--gold:#EBAD18;--ink:#1E1E1C;--muted:#6b6c7e;--bg:#f5f5f9;--line:#e4e4ee;--card:#fff;--shadow:0 20px 50px rgba(36,34,89,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:14px}
+button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed}a{color:inherit}
+.mast{background:var(--ink);padding:13px 20px;display:flex;align-items:center;justify-content:center;min-height:57px}
+.mast img{height:38px;width:auto;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)}
+.mast .brand{font-family:"Barlow Condensed",sans-serif;color:white;font-weight:800;letter-spacing:.09em;font-size:21px}
+.hero{background:linear-gradient(122deg,#292766 0%,#3f3e95 57%,#5554b6 100%);color:#fff;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;width:410px;height:410px;border:72px solid rgba(255,255,255,.055);border-radius:50%;right:-210px;top:-170px}
+.hero:after{content:"";position:absolute;width:200px;height:200px;border:40px solid rgba(235,173,24,.12);border-radius:50%;left:-110px;bottom:-95px}
+.hero-inner{max-width:1030px;margin:auto;padding:44px 22px 53px;position:relative;z-index:1}
+.kicker{display:inline-flex;gap:9px;align-items:center;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffda79}
+.dot{width:7px;height:7px;background:var(--gold);border-radius:50%}
+h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(52px,10vw,86px);font-weight:900;line-height:.89;letter-spacing:-.02em;text-transform:uppercase;margin:21px 0 18px;max-width:640px}
+h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:clamp(14px,2.4vw,16px);color:#f0effe;max-width:540px;line-height:1.75;margin:0}
+.hero-numbers{display:flex;gap:23px;margin-top:31px;align-items:center;flex-wrap:wrap}
+.hero-numbers span{font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:800;color:#d5d4f6}
+.hero-numbers b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:36px;line-height:1.02;color:#fff}
+.hero-numbers .rule{width:1px;height:37px;background:#a2a0cf}
+.shell{max-width:1030px;margin:-22px auto 55px;padding:0 22px;position:relative}
+.card-shell{background:#fff;border:1px solid #eeeeF4;border-radius:21px;box-shadow:var(--shadow);padding:clamp(19px,4vw,36px)}
+.step{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.section-head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin:8px 0 6px}
+h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(29px,5vw,43px);text-transform:uppercase;letter-spacing:.005em;line-height:1; margin:0}
+.sub{margin:9px 0 21px;color:var(--muted);font-size:13px;line-height:1.7}
+.count{font-size:11px;font-weight:800;background:#f0effb;color:var(--blue);padding:9px 12px;border-radius:20px;white-space:nowrap}
+.countries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.option{min-width:0;text-align:left;border:1.5px solid #e7e7ef;background:#fff;border-radius:15px;display:flex;align-items:center;gap:14px;padding:17px 15px;min-height:104px;position:relative;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+.option:hover{transform:translateY(-1px);border-color:#c7c5eb}.option:focus-visible{outline:3px solid #f4c35a;outline-offset:2px}
+.option.selected{background:#faf8f0;border-color:var(--gold);box-shadow:0 0 0 2px rgba(235,173,24,.17)}
+.flag{font-size:38px;flex:0 0 47px;line-height:1;text-align:center}
+.name{display:block;font-weight:800;font-size:14px;color:var(--ink)}
+.food{display:block;margin-top:5px;color:#737384;font-size:11px;line-height:1.45}
+.tick{position:absolute;right:13px;top:13px;width:19px;height:19px;border-radius:50%;border:1.5px solid #d5d5e1;background:#fff;display:grid;place-items:center}
+.selected .tick{background:var(--gold);border-color:var(--gold);color:#242243}
+.selected .tick:after{content:"✓";font-size:12px;font-weight:900}
+.selection-note{display:flex;align-items:center;gap:8px;margin-top:14px;color:#777788;font-size:11px}
+.selection-note:before{content:"";width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--gold)}
+.form-area{border-top:1px solid #ebebf0;margin-top:27px;padding-top:26px}
+.label{font-size:10px;color:var(--blue);font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.form-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-top:15px}
+.form-group label{display:block;margin-bottom:8px;font-size:12px;font-weight:800;color:#292941}
+.form-group input{width:100%;height:48px;padding:0 14px;border:1.5px solid #dcdce6;border-radius:11px;outline:none;background:#fff;color:var(--ink);font-size:14px}
+.form-group input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(63,62,149,.12)}
+.form-group small{display:block;margin-top:7px;color:#898999;font-size:10px;line-height:1.45}
+.callout{background:#f6f5fc;border:1px solid #e5e3f9;color:#575579;padding:12px 14px;border-radius:11px;font-size:11px;line-height:1.7;margin-top:18px}
+.submit{margin-top:20px;width:100%;min-height:54px;background:var(--gold);color:#181714;border:0;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:12px;font-weight:900;letter-spacing:.015em;font-size:14px;transition:transform .15s,filter .15s}
+.submit:not(:disabled):hover{filter:brightness(1.04);transform:translateY(-1px)}
+.submit:disabled{opacity:.55}.status{font-size:12px;line-height:1.6;margin:13px 0 0;color:#666680;text-align:center;min-height:20px}
+.status.error{color:#a52f32}.status.good{color:#23724b}
+.success{display:none;text-align:center;padding:26px 2px 16px}.success.show{display:block}
+.success-badge{width:80px;height:80px;border-radius:50%;background:#e7f8ee;color:#23754d;display:grid;place-items:center;margin:0 auto 23px;font-size:39px}
+.success h2{font-size:47px}.success p{color:#646477;line-height:1.9;max-width:410px;margin:13px auto}
+.chosen{background:#f7f6fd;display:inline-block;margin-top:9px;border-radius:9px;padding:12px 19px;font-weight:800;color:var(--blue)}
+.share{border:1px solid #c8c5e7;color:var(--blue);background:white;border-radius:12px;font-weight:800;padding:13px 20px;text-decoration:none;display:inline-block;margin-top:27px}
+.foot{font-size:11px;color:#85869a;text-align:center;padding:0 24px 30px;line-height:1.8}
+.foot b{color:#44438b}
+@media(max-width:640px){.hero-inner{padding:34px 21px 47px}.shell{padding:0 12px;margin-top:-19px}.card-shell{border-radius:17px;padding:20px 15px}.countries{grid-template-columns:1fr;gap:9px}.option{min-height:79px;padding:13px 13px}.flag{font-size:33px;flex-basis:40px}.food{margin-top:3px}.tick{top:12px;right:12px}.form-grid{grid-template-columns:1fr}.count{display:none}.hero-numbers{gap:14px}.hero-numbers span{font-size:9px}.hero-numbers b{font-size:30px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="mast"><img src="../logo.svg" alt="Academia Feeling" onerror="this.style.display='none';document.querySelector('.brand').style.display='block'"><span class="brand" style="display:none">FEELING ACADEMIA</span></header>
+<section class="hero"><div class="hero-inner">
+<span class="kicker"><span class="dot"></span> FEELING WORLD RIDE • GRAND FINALE</span>
+<h1>O mundo pedalou.<br><em>Agora é hora<br>de celebrar.</em></h1>
+<p>Dez países, muitas conquistas e uma só comunidade. Qual país vai inspirar o nosso jantar de encerramento? <strong>A decisão é sua!</strong></p>
+<div class="hero-numbers"><span><b>10</b>países</span><i class="rule"></i><span><b>01</b>escolha</span><i class="rule"></i><span><b>100%</b>Feeling</span></div>
+</div></section>
+<main class="shell"><div class="card-shell">
+<div id="ballot">
+<div class="step">01 / Escolha seu destino gastronômico</div>
+<div class="section-head"><h2>Para qual país vamos?</h2><span class="count">SELECIONE 1 PAÍS</span></div>
+<p class="sub">Escolha o tema que mais combina com o nosso jantar. As comidas são apenas inspirações — o cardápio será definido depois.</p>
+<div class="countries" id="countries" role="radiogroup" aria-label="País-tema do jantar"></div>
+<div class="selection-note">Seu voto é individual e será contabilizado uma única vez.</div>
+<form id="vote-form" class="form-area">
+<div class="label">02 / Identifique seu voto</div>
+<h2 style="font-size:31px;margin-top:10px">Falta só confirmar</h2>
+<div class="form-grid">
+<div class="form-group"><label for="student-name">Seu nome</label><input id="student-name" maxlength="80" minlength="3" autocomplete="name" placeholder="Nome e sobrenome" required><small>Para identificação da participação no Ride.</small></div>
+<div class="form-group"><label for="last4">4 últimos dígitos do WhatsApp</label><input id="last4" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="Ex.: 1234" required><small>Usados somente para evitar voto duplicado.</small></div>
+</div>
+<div class="callout"><strong>Privacidade:</strong> não pedimos seu número completo. Os quatro dígitos não são guardados na planilha; eles são usados para gerar um identificador de voto.</div>
+<button class="submit" id="submit" type="submit" disabled>CONFIRMAR MEU VOTO <span aria-hidden="true">↗</span></button>
+<p class="status" id="status" aria-live="polite">Verificando a abertura da votação…</p>
+</form>
+</div>
+<div class="success" id="success" role="status" aria-live="polite"><div class="success-badge">✓</div><div class="step">VOTO REGISTRADO</div><h2>Seu voto valeu!</h2><p>Agora é torcer pelo seu destino favorito. O resultado será anunciado pela equipe Feeling.</p><div class="chosen" id="chosen"></div><br><a id="share" class="share" target="_blank" rel="noopener" href="#">CONVIDAR OUTRO PARTICIPANTE ↗</a></div>
+</div></main>
+<footer class="foot"><b>FEELING WORLD RIDE</b> • Cada pedalada nos levou mais longe. Agora vamos comemorar juntos.</footer>
+<script>
+"use strict";
+/* URL publicada do Google Apps Script. Substituir apos implantar o backend. */
+const API_URL = "";
+const COUNTRIES = [
+ {name:"Espanha",flag:"🇪🇸",dish:"Tapas e sabores mediterrâneos"},
+ {name:"Canadá",flag:"🇨🇦",dish:"Poutine e cozinha canadense"},
+ {name:"França",flag:"🇫🇷",dish:"Bistrô francês e crepes"},
+ {name:"Ruanda",flag:"🇷🇼",dish:"Brochetes e sabores africanos"},
+ {name:"África do Sul",flag:"🇿🇦",dish:"Braai, churrasco sul-africano"},
+ {name:"Emirados Árabes Unidos",flag:"🇦🇪",dish:"Mezze e cozinha árabe"},
+ {name:"Japão",flag:"🇯🇵",dish:"Yakisoba e cozinha japonesa"},
+ {name:"Colômbia",flag:"🇨🇴",dish:"Arepas e sabores colombianos"},
+ {name:"Taiwan",flag:"🇹🇼",dish:"Bao e comida de rua taiwanesa"},
+ {name:"Nova Zelândia",flag:"🇳🇿",dish:"Fish and chips e sabores da Oceania"}
+];
+let selected=null, open=false, busy=false;
+const $=id=>document.getElementById(id);
+const container=$("countries");
+for(const country of COUNTRIES){
+ const btn=document.createElement("button");
+ btn.type="button";btn.className="option";btn.setAttribute("role","radio");btn.setAttribute("aria-checked","false");
+ btn.innerHTML='<span class="flag" aria-hidden="true"></span><span class="copy"><strong class="name"></strong><span class="food"></span></span><span class="tick" aria-hidden="true"></span>';
+ btn.querySelector(".flag").textContent=country.flag;
+ btn.querySelector(".name").textContent=country.name;
+ btn.querySelector(".food").textContent=country.dish;
+ btn.addEventListener("click",()=>{if(!open)return;selected=country.name;for(const card of container.children){const yes=card.querySelector(".name").textContent===selected;card.classList.toggle("selected",yes);card.setAttribute("aria-checked",String(yes));}setButton();});
+ container.appendChild(btn);
+}
+function showStatus(message,kind=""){const el=$("status");el.textContent=message;el.className="status "+kind;}
+function setButton(){const btn=$("submit");btn.disabled=!open||!selected||busy;btn.textContent=busy?"REGISTRANDO SEU VOTO…":"CONFIRMAR MEU VOTO ↗";}
+function api(action,params={}){
+ return new Promise((resolve,reject)=>{
+  if(!API_URL){reject(new Error("Votação ainda não configurada."));return;}
+  const cb="ridecb_"+Date.now()+"_"+Math.random().toString(36).slice(2,9);
+  const script=document.createElement("script");
+  let done=false;
+  const cleanup=()=>{if(done)return;done=true;clearTimeout(timer);delete window[cb];script.remove();};
+  const timer=setTimeout(()=>{cleanup();reject(new Error("A conexão demorou. Confira sua internet e tente novamente."));},12000);
+  window[cb]=data=>{cleanup();resolve(data);};
+  script.onerror=()=>{cleanup();reject(new Error("Não foi possível conectar à votação. Tente novamente."));};
+  const search=new URLSearchParams({action,callback:cb,...params,_:Date.now().toString()});
+  script.src=API_URL+"?"+search.toString();
+  document.body.appendChild(script);
+ });
+}
+function confirmVote(country){
+ $("ballot").style.display="none";$("success").classList.add("show");
+ const data=COUNTRIES.find(c=>c.name===country);
+ $("chosen").textContent=(data?data.flag+" ":"")+country;
+ const msg="Já escolhi meu país para o jantar de encerramento do Feeling World Ride! Vote também: "+location.href.split("?")[0];
+ $("share").href="https://wa.me/?text="+encodeURIComponent(msg);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+async function init(){
+ try{
+  if(!API_URL){open=false;showStatus("Prévia da votação — falta conectar a planilha para liberar os votos.");return;}
+  const result=await api("status");
+  open=Boolean(result&&result.ok&&result.open);
+  if(!result||!result.ok){showStatus("Não foi possível verificar o status da votação.","error");return;}
+  if(!open){showStatus("A votação está encerrada. Obrigado por participar!");return;}
+  const prev=localStorage.getItem("feeling_ride_jantar_voto_v1");
+  if(prev&&COUNTRIES.some(c=>c.name===prev)){confirmVote(prev);return;}
+  showStatus("Votação aberta! Escolha seu país e confirme.");
+ }catch(err){open=false;showStatus(err.message,"error");}
+ finally{setButton();}
+}
+$("vote-form").addEventListener("submit",async ev=>{
+ ev.preventDefault();
+ if(!open||!selected||busy)return;
+ const name=$("student-name").value.trim().replace(/\s+/g," ");
+ const last4=$("last4").value.trim();
+ if(name.length<3){showStatus("Digite seu nome e sobrenome.","error");$("student-name").focus();return;}
+ if(!/^\d{4}$/.test(last4)){showStatus("Digite exatamente os 4 últimos dígitos do WhatsApp.","error");$("last4").focus();return;}
+ busy=true;setButton();showStatus("Registrando o voto…");
+ try{
+  const res=await api("vote",{name,last4,country:selected});
+  if(res&&res.ok){localStorage.setItem("feeling_ride_jantar_voto_v1",selected);confirmVote(selected);}
+  else if(res&&res.code==="duplicate"){showStatus("Já existe um voto registrado com esses dados. Cada participante vota uma vez.","error");}
+  else if(res&&res.code==="closed"){open=false;showStatus("A votação foi encerrada pela equipe.","error");}
+  else showStatus((res&&res.message)||"Não foi possível registrar. Confira os dados e tente novamente.","error");
+ }catch(err){showStatus(err.message,"error");}
+ finally{busy=false;setButton();}
+});
+init();
+</script>
+</body>
+</html>
