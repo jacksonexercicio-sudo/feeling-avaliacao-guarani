@@ -70,7 +70,7 @@ h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(29px,5vw,43px);text
 .success-badge{width:80px;height:80px;border-radius:50%;background:#e7f8ee;color:#23754d;display:grid;place-items:center;margin:0 auto 23px;font-size:39px}
 .success h2{font-size:47px}.success p{color:#646477;line-height:1.9;max-width:410px;margin:13px auto}
 .chosen{background:#f7f6fd;display:inline-block;margin-top:9px;border-radius:9px;padding:12px 19px;font-weight:800;color:var(--blue)}
-.share{border:1px solid #c8c5e7;color:var(--blue);background:white;border-radius:12px;font-weight:800;padding:13px 20px;text-decoration:none;display:inline-block;margin-top:27px}
+.new-participant{border:0;border-radius:12px;background:var(--gold);color:var(--ink);font-weight:900;padding:15px 22px;display:block;margin:22px auto 9px;min-height:52px;width:100%;max-width:370px}.new-participant:hover{filter:brightness(1.04)}.new-participant:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.shared-note{font-size:12px!important;color:var(--muted)!important;margin:8px auto 0!important;line-height:1.6!important}.share{border:1px solid #c8c5e7;color:var(--blue);background:white;border-radius:12px;font-weight:800;padding:13px 20px;text-decoration:none;display:inline-block;margin-top:17px}
 .foot{font-size:11px;color:#85869a;text-align:center;padding:0 24px 30px;line-height:1.8}
 .foot b{color:#44438b}
 @media(max-width:640px){.hero-inner{padding:34px 21px 47px}.shell{padding:0 12px;margin-top:-19px}.card-shell{border-radius:17px;padding:20px 15px}.countries{grid-template-columns:1fr;gap:9px}.option{min-height:79px;padding:13px 13px}.flag{font-size:33px;flex-basis:40px}.food{margin-top:3px}.tick{top:12px;right:12px}.form-grid{grid-template-columns:1fr}.count{display:none}.hero-numbers{gap:14px}.hero-numbers span{font-size:9px}.hero-numbers b{font-size:30px}}
@@ -92,7 +92,7 @@ h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(29px,5vw,43px);text
 <div class="section-head"><h2>Para qual país vamos?</h2><span class="count">SELECIONE 1 PAÍS</span></div>
 <p class="sub">Escolha o tema que mais combina com o nosso jantar. As comidas são apenas inspirações — o cardápio será definido depois.</p>
 <div class="countries" id="countries" role="radiogroup" aria-label="País-tema do jantar"></div>
-<div class="selection-note">Seu voto é individual e será contabilizado uma única vez.</div>
+<div class="selection-note">Cada aluno pode votar uma única vez, mesmo que várias pessoas usem este celular.</div>
 <form id="vote-form" class="form-area">
 <div class="label">02 / Identifique seu voto</div>
 <h2 style="font-size:31px;margin-top:10px">Falta só confirmar</h2>
@@ -105,7 +105,7 @@ h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(29px,5vw,43px);text
 <p class="status" id="status" aria-live="polite">Verificando a abertura da votação…</p>
 </form>
 </div>
-<div class="success" id="success" role="status" aria-live="polite"><div class="success-badge">✓</div><div class="step">VOTO REGISTRADO</div><h2>Seu voto valeu!</h2><p>Agora é torcer pelo seu destino favorito. O resultado será anunciado pela equipe Feeling.</p><p><strong>🎉 Comemoração dia 13 de novembro, a partir das 19h, com a entrega das premiações!</strong></p><div class="chosen" id="chosen"></div><br><a id="share" class="share" target="_blank" rel="noopener" href="#">CONVIDAR OUTRO PARTICIPANTE ↗</a></div>
+<div class="success" id="success" role="status" aria-live="polite"><div class="success-badge">✓</div><div class="step">VOTO REGISTRADO</div><h2>Seu voto valeu!</h2><p>Agora é torcer pelo seu destino favorito. O resultado será anunciado pela equipe Feeling.</p><p><strong>🎉 Comemoração dia 13 de novembro, a partir das 19h, com a entrega das premiações!</strong></p><div class="chosen" id="chosen"></div><button id="new-participant" type="button" class="new-participant">VOTAR COM OUTRO PARTICIPANTE ↗</button><p class="shared-note">Se outra pessoa vai votar neste mesmo celular, toque no botão acima.</p><a id="share" class="share" target="_blank" rel="noopener" href="#">CONVIDAR PELO WHATSAPP ↗</a></div>
 </div></main>
 <footer class="foot"><b>FEELING WORLD RIDE</b> • Cada pedalada nos levou mais longe. Agora vamos comemorar juntos.</footer>
 <script>
@@ -169,12 +169,25 @@ async function init(){
   open=Boolean(result&&result.ok&&result.open);
   if(!result||!result.ok){showStatus("Não foi possível verificar o status da votação.","error");return;}
   if(!open){showStatus("A votação está encerrada. Obrigado por participar!");return;}
-  const prev=localStorage.getItem("feeling_ride_jantar_voto_v1");
-  if(prev&&COUNTRIES.some(c=>c.name===prev)){confirmVote(prev);return;}
+  // O aparelho pode ser compartilhado. Nunca bloqueie o formulário por voto salvo no navegador.
+  try{localStorage.removeItem("feeling_ride_jantar_voto_v1");}catch(e){}
   showStatus("Votação aberta! Escolha seu país e confirme.");
  }catch(err){open=false;showStatus(err.message,"error");}
  finally{setButton();}
 }
+function resetForNextParticipant(){
+  // Apaga os dados e a escolha apenas do formulário, nunca votos já gravados.
+  $("vote-form").reset();
+  selected=null;
+  for(const card of container.children){card.classList.remove("selected");card.setAttribute("aria-checked","false");}
+  $("chosen").textContent="";
+  $("success").classList.remove("show");
+  $("ballot").style.display="";
+  showStatus("Pronto! O próximo participante já pode escolher seu país.");
+  setButton();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("new-participant").addEventListener("click",resetForNextParticipant);
 $("vote-form").addEventListener("submit",async ev=>{
  ev.preventDefault();
  if(!open||!selected||busy)return;
@@ -185,7 +198,7 @@ $("vote-form").addEventListener("submit",async ev=>{
  busy=true;setButton();showStatus("Registrando o voto…");
  try{
   const res=await api("vote",{name,last4,country:selected});
-  if(res&&res.ok){localStorage.setItem("feeling_ride_jantar_voto_v1",selected);confirmVote(selected);}
+  if(res&&res.ok){confirmVote(selected);}
   else if(res&&res.code==="duplicate"){showStatus("Já existe um voto registrado com esses dados. Cada participante vota uma vez.","error");}
   else if(res&&res.code==="closed"){open=false;showStatus("A votação foi encerrada pela equipe.","error");}
   else showStatus((res&&res.message)||"Não foi possível registrar. Confira os dados e tente novamente.","error");
